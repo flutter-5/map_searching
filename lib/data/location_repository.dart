@@ -14,7 +14,8 @@ class LocationRepository {
   final client = Client();
   Future<List<Location>?> searchLocation(String text) async {
     final response = await client.get(
-        Uri.parse('https://openapi.naver.com/v1/search/local.json?query=$text'),
+        Uri.parse(
+            'https://openapi.naver.com/v1/search/local.json?query=$text&display=5'),
         headers: {
           'X-Naver-Client-Id': 'YpAdaCBYtLZyr6WtmQzT',
           'X-Naver-Client-Secret': 'j0nAUpT0FI',

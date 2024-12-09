@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map_searching_app/home_view_model.dart';
+import 'package:flutter_map_searching_app/widget/detail.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -31,18 +32,16 @@ class _HomePageState extends ConsumerState<HomePage> {
         appBar: AppBar(
           title: SizedBox(
             height: 50,
-            child: Expanded(
-              child: TextField(
-                controller: controller,
-                onSubmitted: searchLocation,
-                decoration: InputDecoration(
-                    hintText: '지역을 입력해주세요.',
-                    border: MaterialStateOutlineInputBorder.resolveWith(
-                      (states) {
-                        return const OutlineInputBorder();
-                      },
-                    )),
-              ),
+            child: TextField(
+              controller: controller,
+              onSubmitted: searchLocation,
+              decoration: InputDecoration(
+                  hintText: '지역을 입력해주세요.',
+                  border: MaterialStateOutlineInputBorder.resolveWith(
+                    (states) {
+                      return const OutlineInputBorder();
+                    },
+                  )),
             ),
           ),
         ),
@@ -60,18 +59,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                 },
                 child: GestureDetector(
                   onTap: () {
-                    return
-                        //             InAppWebView(
-                        // initialSettings: InAppWebViewSettings(
-                        //   mediaPlaybackRequiresUserGesture: true,
-                        //   javaScriptEnabled: true,
-                        //   userAgent:
-                        //       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
-                        // ),
-                        // initialUrlRequest: URLRequest(
-                        //   url: WebUri(book.link),
-                        // ),;
-                        ;
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return Detail(state[index]);
+                    }));
                   },
                   child: Container(
                     height: 100,
