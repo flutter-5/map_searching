@@ -7,8 +7,11 @@ class AppbarTextfield extends StatefulWidget implements PreferredSizeWidget {
   TextEditingController controller;
   AppbarTextfield(this.controller, {super.key});
 
-  // @override
-  // Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  @override
+  Size get preferredSize =>
+      const Size.fromHeight(kToolbarHeight); //kToolbarHeight:56(상수 )
+  //fromHeight ==User.fromJson double->Size 네임드 생성자
+  //size 클래스 Colors.black
 
   @override
   State<AppbarTextfield> createState() => _AppbarTextfieldState();
