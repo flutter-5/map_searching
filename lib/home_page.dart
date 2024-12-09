@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map_searching_app/home_view_model.dart';
 import 'package:flutter_map_searching_app/widget/appbar_textfield.dart';
-import 'package:flutter_map_searching_app/widget/detail.dart';
 import 'package:flutter_map_searching_app/widget/home_list_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
