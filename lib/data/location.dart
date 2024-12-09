@@ -1,17 +1,3 @@
-// "items": [
-//     {
-//       "title": "삼성카드",
-//       "link": "",
-//       "category": "금융,보험>신용카드",
-//       "description": "",
-//       "telephone": "",
-//       "address": "서울특별시 중구 태평로2가 250",
-//       "roadAddress": "서울특별시 중구 세종대로 67 삼성본관빌딩",
-//       "mapx": "1269754184",
-//       "mapy": "375624251"
-//     }
-//   ]
-//https://developers.naver.com/docs/serviceapi/search/local/local.md#%EC%A7%80%EC%97%AD
 class Location {
   String title;
   String link;
