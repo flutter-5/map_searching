@@ -1,9 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map_searching_app/home_view_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerStatefulWidget {
+  @override
+  ConsumerState<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends ConsumerState<HomePage> {
+  final controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final controller = TextEditingController();
+    final state = ref.watch(homeViewModel);
+    @override
+    dispose() {
+      controller.dispose();
+      super.dispose();
+    }
+
+    void searchLocation(String text) {
+      final vm = ref.read(homeViewModel.notifier);
+      vm.searchLocation(text);
+    }
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -15,6 +34,7 @@ class HomePage extends StatelessWidget {
             child: Expanded(
               child: TextField(
                 controller: controller,
+                onSubmitted: searchLocation,
                 decoration: InputDecoration(
                     hintText: '지역을 입력해주세요.',
                     border: MaterialStateOutlineInputBorder.resolveWith(
@@ -29,39 +49,55 @@ class HomePage extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.all(20),
           child: ListView.separated(
-            itemCount: 5,
+            itemCount: state.length,
             separatorBuilder: (context, index) {
               return SizedBox(height: 20);
             },
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  print('리스트 눌러짐');
+                  searchLocation(controller.text);
                 },
-                child: Container(
-                  height: 100,
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '삼성1동 주민센터',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
-                        ),
-                        SizedBox(height: 5),
-                        Text('공공, 사회기관>행정복지센터'),
-                        Text('서울특별시 강남구'),
-                      ],
+                child: GestureDetector(
+                  onTap: () {
+                    return
+                        //             InAppWebView(
+                        // initialSettings: InAppWebViewSettings(
+                        //   mediaPlaybackRequiresUserGesture: true,
+                        //   javaScriptEnabled: true,
+                        //   userAgent:
+                        //       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+                        // ),
+                        // initialUrlRequest: URLRequest(
+                        //   url: WebUri(book.link),
+                        // ),;
+                        ;
+                  },
+                  child: Container(
+                    height: 100,
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            state[index].title,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                          SizedBox(height: 5),
+                          Text(state[index].category),
+                          Text(state[index].address),
+                        ],
+                      ),
                     ),
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.grey),
-                    color: Colors.transparent,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.grey),
+                      color: Colors.transparent,
+                    ),
                   ),
                 ),
               );

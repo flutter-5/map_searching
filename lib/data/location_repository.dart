@@ -12,10 +12,9 @@ import 'package:http/http.dart';
 
 class LocationRepository {
   final client = Client();
-  Future<List<Location>?> searchLocation() async {
+  Future<List<Location>?> searchLocation(String text) async {
     final response = await client.get(
-        Uri.parse(
-            'https://openapi.naver.com/v1/search/local.json?query=samsung'),
+        Uri.parse('https://openapi.naver.com/v1/search/local.json?query=$text'),
         headers: {
           'X-Naver-Client-Id': 'YpAdaCBYtLZyr6WtmQzT',
           'X-Naver-Client-Secret': 'j0nAUpT0FI',
