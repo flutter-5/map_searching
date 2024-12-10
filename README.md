@@ -1,8 +1,6 @@
 # flutter_map_searching_app
 
-<p align="center">
-<img src="![지도맵 시연영상](https://github.com/user-attachments/assets/1618daaf-28fe-423a-b78d-f2d3e3a3d1dd)">
-</p>
+![지도맵 시연영상](https://github.com/user-attachments/assets/81d7868e-0bdf-4a7a-bf2d-80ca8340acea)
 
 ## Getting Started
 
