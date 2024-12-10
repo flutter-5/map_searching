@@ -1,6 +1,6 @@
 # flutter_map_searching_app
 
-A new Flutter project.
+<img src="![지도맵 gif](https://github.com/user-attachments/assets/6a5b0a63-fbb5-4d42-8b78-fcb19e928d55)">
 
 ## Getting Started
 
