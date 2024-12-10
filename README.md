@@ -20,7 +20,7 @@ Flutter로 제작된 네이버맵 기반 검색앱입니다. 사용자는 지역
   - ListView.sepaerated 를 활용한 동적 목록 생성
   - textfield로 입력처리
   - http: url연동
-  - flutter_liverpod: mvvm
+  - flutter_riverpod: mvvm
 
 ## 📂 프로젝트 구조
 📦lib<br>
